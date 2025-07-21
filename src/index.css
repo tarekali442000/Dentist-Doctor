@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Professional medical color palette */
+    --background: 0 0% 100%;
+    --foreground: 210 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 15% 15%;
+
+    /* Medical blue primary */
+    --primary: 208 91% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 208 91% 55%;
+    --primary-dark: 208 91% 35%;
+
+    /* Soft medical secondary */
+    --secondary: 208 20% 96%;
+    --secondary-foreground: 210 15% 25%;
+
+    --muted: 208 15% 96%;
+    --muted-foreground: 210 12% 45%;
+
+    /* Mint accent for freshness */
+    --accent: 168 76% 85%;
+    --accent-foreground: 168 76% 25%;
+    --accent-strong: 168 76% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 208 20% 92%;
+    --input: 208 20% 96%;
+    --ring: 208 91% 45%;
+
+    /* Medical gradients */
+    --gradient-medical: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-soft: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-strong)));
+
+    /* Professional shadows */
+    --shadow-soft: 0 2px 10px -2px hsl(var(--primary) / 0.1);
+    --shadow-medical: 0 8px 25px -8px hsl(var(--primary) / 0.15);
+    --shadow-strong: 0 15px 35px -5px hsl(var(--primary) / 0.2);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+    direction: rtl;
+  }
+
+  /* Professional typography scale */
+  .heading-hero {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+  }
+
+  .heading-xl {
+    @apply text-3xl md:text-4xl font-bold leading-tight;
+  }
+
+  .heading-lg {
+    @apply text-2xl md:text-3xl font-semibold leading-tight;
+  }
+
+  .heading-md {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  .text-body {
+    @apply text-base leading-relaxed;
+  }
+
+  /* Medical-themed components */
+  .medical-card {
+    @apply bg-card border border-border shadow-[var(--shadow-medical)] rounded-xl p-6 transition-all duration-300 hover:shadow-[var(--shadow-strong)];
+  }
+
+  .btn-medical {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] text-primary-foreground px-6 py-3 rounded-lg font-medium shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-medical)] hover:scale-105;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-to-r from-[hsl(var(--accent))] to-[hsl(var(--accent-strong))] text-accent-foreground px-6 py-3 rounded-lg font-medium shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-medical)] hover:scale-105;
+  }
+
+  /* Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
